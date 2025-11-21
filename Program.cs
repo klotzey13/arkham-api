@@ -12,7 +12,8 @@ builder.Services.AddPooledDbContextFactory<ArkhamDbContext>(options =>
 
 // Also register scoped DbContext for DataSeeder
 builder.Services.AddScoped<ArkhamDbContext>(sp =>
-    sp.GetRequiredService<IDbContextFactory<ArkhamDbContext>>().CreateDbContext());
+    sp.GetRequiredService<IDbContextFactory<ArkhamDbContext>>().CreateDbContext()
+);
 
 // Register DataSeeder
 builder.Services.AddScoped<DataSeeder>();
