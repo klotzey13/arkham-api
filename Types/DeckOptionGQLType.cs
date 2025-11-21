@@ -1,4 +1,3 @@
-
 using Arkham.API.Entities;
 
 namespace Arkham.API.Types;
