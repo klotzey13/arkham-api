@@ -1,4 +1,3 @@
-
 using Arkham.API.Entities;
 
 namespace Arkham.API.Types;
@@ -50,6 +49,7 @@ public class CardGQLType : ObjectType<Card>
         descriptor.Field(t => t.Pack).Type<PackGQLType>();
         descriptor.Field(t => t.Type).Type<CardTypeGQLType>();
         descriptor.Field(t => t.Faction).Type<FactionGQLType>();
+        descriptor.Field(t => t.Faction2).Type<FactionGQLType>();
         descriptor.Field(t => t.SubType).Type<SubTypeGQLType>();
     }
 }
