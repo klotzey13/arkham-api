@@ -10,20 +10,20 @@ namespace Arkham.API.Migrations
         /// <inheritdoc />
         protected override void Up(MigrationBuilder migrationBuilder)
         {
-            migrationBuilder.DropForeignKey(
-                name: "FK_Cards_Factions_FactionId",
-                table: "Cards");
+            migrationBuilder.DropForeignKey(name: "FK_Cards_Factions_FactionId", table: "Cards");
 
             migrationBuilder.AddColumn<int>(
                 name: "Faction2Id",
                 table: "Cards",
                 type: "integer",
-                nullable: true);
+                nullable: true
+            );
 
             migrationBuilder.CreateIndex(
                 name: "IX_Cards_Faction2Id",
                 table: "Cards",
-                column: "Faction2Id");
+                column: "Faction2Id"
+            );
 
             migrationBuilder.AddForeignKey(
                 name: "FK_Cards_Factions_Faction2Id",
@@ -31,7 +31,8 @@ namespace Arkham.API.Migrations
                 column: "Faction2Id",
                 principalTable: "Factions",
                 principalColumn: "Id",
-                onDelete: ReferentialAction.Restrict);
+                onDelete: ReferentialAction.Restrict
+            );
 
             migrationBuilder.AddForeignKey(
                 name: "FK_Cards_Factions_FactionId",
@@ -39,27 +40,20 @@ namespace Arkham.API.Migrations
                 column: "FactionId",
                 principalTable: "Factions",
                 principalColumn: "Id",
-                onDelete: ReferentialAction.Restrict);
+                onDelete: ReferentialAction.Restrict
+            );
         }
 
         /// <inheritdoc />
         protected override void Down(MigrationBuilder migrationBuilder)
         {
-            migrationBuilder.DropForeignKey(
-                name: "FK_Cards_Factions_Faction2Id",
-                table: "Cards");
+            migrationBuilder.DropForeignKey(name: "FK_Cards_Factions_Faction2Id", table: "Cards");
 
-            migrationBuilder.DropForeignKey(
-                name: "FK_Cards_Factions_FactionId",
-                table: "Cards");
+            migrationBuilder.DropForeignKey(name: "FK_Cards_Factions_FactionId", table: "Cards");
 
-            migrationBuilder.DropIndex(
-                name: "IX_Cards_Faction2Id",
-                table: "Cards");
+            migrationBuilder.DropIndex(name: "IX_Cards_Faction2Id", table: "Cards");
 
-            migrationBuilder.DropColumn(
-                name: "Faction2Id",
-                table: "Cards");
+            migrationBuilder.DropColumn(name: "Faction2Id", table: "Cards");
 
             migrationBuilder.AddForeignKey(
                 name: "FK_Cards_Factions_FactionId",
@@ -67,7 +61,8 @@ namespace Arkham.API.Migrations
                 column: "FactionId",
                 principalTable: "Factions",
                 principalColumn: "Id",
-                onDelete: ReferentialAction.Cascade);
+                onDelete: ReferentialAction.Cascade
+            );
         }
     }
 }
