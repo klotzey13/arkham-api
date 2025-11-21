@@ -27,6 +27,21 @@ public class ArkhamDbContext : DbContext
     {
         modelBuilder
             .Entity<Card>()
+            .HasOne(c => c.Faction)
+            .WithMany(f => f.Cards)
+            .HasForeignKey(c => c.FactionId)
+            .OnDelete(DeleteBehavior.Restrict);
+
+        modelBuilder
+            .Entity<Card>()
+            .HasOne(c => c.Faction2)
+            .WithMany()
+            .HasForeignKey(c => c.Faction2Id)
+            .IsRequired(false)
+            .OnDelete(DeleteBehavior.Restrict);
+
+        modelBuilder
+            .Entity<Card>()
             .HasOne(c => c.DeckRequirement)
             .WithOne(dr => dr.Card)
             .HasForeignKey<DeckRequirement>(dr => dr.CardId)

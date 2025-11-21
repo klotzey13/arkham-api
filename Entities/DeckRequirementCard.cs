@@ -1,4 +1,3 @@
-
 namespace Arkham.API.Entities;
 
 public class DeckRequirementCard
