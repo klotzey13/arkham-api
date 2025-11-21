@@ -1,4 +1,3 @@
-
 using System.ComponentModel.DataAnnotations;
 
 namespace Arkham.API.Entities;
@@ -54,6 +53,9 @@ public class Card
 
     public int FactionId { get; set; }
     public Faction? Faction { get; set; }
+
+    public int? Faction2Id { get; set; }
+    public Faction? Faction2 { get; set; }
 
     public int? SubTypeId { get; set; }
     public SubType? SubType { get; set; }

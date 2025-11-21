@@ -2,6 +2,7 @@
 using Arkham.API.Data;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using Npgsql.EntityFrameworkCore.PostgreSQL.Metadata;
 
@@ -10,9 +11,11 @@ using Npgsql.EntityFrameworkCore.PostgreSQL.Metadata;
 namespace Arkham.API.Migrations
 {
     [DbContext(typeof(ArkhamDbContext))]
-    partial class ArkhamDbContextModelSnapshot : ModelSnapshot
+    [Migration("20251121020020_AddFaction2Card")]
+    partial class AddFaction2Card
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        /// <inheritdoc />
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
