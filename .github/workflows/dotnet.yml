@@ -1,0 +1,51 @@
+name: .NET
+
+  on:
+    push:
+      branches: [ "main" ]
+    pull_request:
+      branches: [ "main" ]
+
+  jobs:
+    build:
+      runs-on: ubuntu-latest
+
+      services:
+        postgres:
+          image: postgres:16
+          env:
+            POSTGRES_USER: arkham_user
+            POSTGRES_PASSWORD: arkham_pass
+            POSTGRES_DB: arkham_test
+          ports:
+            - 5432:5432
+          options: >-
+            --health-cmd pg_isready
+            --health-interval 10s
+            --health-timeout 5s
+            --health-retries 5
+
+      defaults:
+        run:
+          working-directory: ./Arkham.API
+
+      env:
+        ConnectionStrings__ArkhamDb:
+  "Host=localhost;Database=arkham_test;Username=arkham_user;Password=arkham_pass"
+
+      steps:
+      - uses: actions/checkout@v4
+
+      - name: Setup .NET
+        uses: actions/setup-dotnet@v4
+        with:
+          dotnet-version: 8.0.x
+
+      - name: Restore
+        run: dotnet restore
+
+      - name: Build
+        run: dotnet build --no-restore -c Release
+
+      - name: Test
+        run: dotnet test --no-build -c Release --verbosity normal
